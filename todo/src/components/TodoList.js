@@ -9,10 +9,19 @@ class TodoList extends React.Component {
     render() {
         return (
             <div>
-                <h1> I am todos </h1>
+                {this.props.todos.map((todo, index) => (
+                    <h4 key={index}>
+                    {todo.todo}
+                    </h4>
+                ))}
             </div>
         );
     }
 }
 
-export default connect(null, {})(TodoList)
+
+const mapStateToProps = state => ({
+    todos: state.todoReducer.todos
+})
+
+export default connect(mapStateToProps, {})(TodoList)
