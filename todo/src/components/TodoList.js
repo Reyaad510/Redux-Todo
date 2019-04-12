@@ -6,8 +6,13 @@ class TodoList extends React.Component {
         newTodo: ''
     };
 
+    handleChange = e => {
+        this.setState({ [e.target.name]: e.target.value })
+    }
+
     render() {
         return (
+            <>
             <div>
                 {this.props.todos.map((todo, index) => (
                     <h4 key={index}>
@@ -15,6 +20,16 @@ class TodoList extends React.Component {
                     </h4>
                 ))}
             </div>
+           
+            <input 
+            type='text'
+            name='newTodo'
+            value={this.state.newTodo}
+            onChange={this.handleChange}
+            placeholder='Add A New ToDo'
+            />
+            <button>Add ToDo</button>
+          </>
         );
     }
 }
